@@ -372,10 +372,15 @@ select:focus {
 }
 
 .success-message {
+    display: none;
     text-align: center;
     padding: 2rem;
     border: 2px solid var(--color-accent);
     background: rgba(107, 140, 66, 0.1);
+}
+
+.hidden {
+    display: none !important;
 }
 
 .check-icon {

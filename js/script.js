@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const segments = {
         citoyens: {
             title: "Citoyens Engagés",
-            icon: "🌱",
+            icon: "🌱", // Icon kept in data but not displayed in header as per request
             text: "Vos biodéchets ne sont pas des ordures, mais de l'or pour la terre. En triant, vous nourrissez la chaîne."
         },
         eleveurs: {
@@ -24,26 +24,51 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // MAPPING SEGMENT -> OPTION VALUE
+    const engagementMap = {
+        citoyens: "Trier",
+        eleveurs: "Transformer",
+        politiques: "Soutenir",
+        organisations: "Investir"
+    };
+
     // DOM ELEMENTS
     const mosaicItems = document.querySelectorAll('.mosaic-item');
     const segmentDetail = document.getElementById('segment-detail');
     const detailContent = segmentDetail.querySelector('.detail-content');
     const closeBtn = segmentDetail.querySelector('.close-detail');
+    const commitmentSelect = document.getElementById('commitment');
 
     // FUNCTIONS
     function openSegment(key) {
         const data = segments[key];
         if (!data) return;
 
-        // Populate content
+        // Populate content - ICON REMOVED from display
         detailContent.innerHTML = `
             <div class="detail-header">
-                <span class="detail-icon">${data.icon}</span>
                 <h3>${data.title}</h3>
             </div>
             <p class="detail-text">${data.text}</p>
             <a href="#engage" class="cta-button">Je m'engage</a>
         `;
+
+        // Add Click Listener for Pre-fill
+        const ctaBtn = detailContent.querySelector('.cta-button');
+        ctaBtn.addEventListener('click', (e) => {
+            const val = engagementMap[key];
+            if (val && commitmentSelect) {
+                commitmentSelect.value = val;
+                // Highlight visual effect
+                commitmentSelect.style.transition = "all 0.3s";
+                commitmentSelect.style.borderColor = 'var(--color-gold)';
+                commitmentSelect.style.backgroundColor = 'rgba(197, 160, 89, 0.1)';
+                setTimeout(() => {
+                    commitmentSelect.style.borderColor = '#ccc';
+                    commitmentSelect.style.backgroundColor = '#fdfdfd';
+                }, 1000);
+            }
+        });
 
         // Show panel
         segmentDetail.classList.remove('hidden');
@@ -77,22 +102,35 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             // Simulate API call / Processing
             const btn = form.querySelector('button');
-            const originalText = btn.textContent;
 
             btn.textContent = "Signature en cours...";
             btn.disabled = true;
 
-            setTimeout(() => {
-                form.classList.add('hidden'); // Or remove it from DOM
-                form.style.display = 'none';
-                successMsg.classList.remove('hidden');
+            // Google Apps Script Web App URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbz7x5XnJOx2luI-2ofVSBbHvvlcyQnDRUDCAMrhrSFLy57z5uDHo4VbjbRjUSjTo5gQ/exec';
 
-                // Log data for debugging (or future expansion)
-                const formData = new FormData(form);
-                console.log("Engagement:", Object.fromEntries(formData));
-            }, 1000);
+            fetch(scriptURL, {
+                method: 'POST',
+                body: new FormData(form)
+            })
+                .then(response => {
+                    // Determine success based on response
+                    form.style.display = 'none';
+                    successMsg.classList.remove('hidden');
+                    successMsg.style.display = 'block';
+                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    console.log('Success!', response);
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    btn.textContent = "Je signe mon engagement"; // Reset text
+                    btn.disabled = false;
+                    alert("Une erreur est survenue lors de l'envoi. Veuillez vérifier votre connexion.");
+                });
         });
     }
 
-    closeBtn.addEventListener('click', closeSegment);
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeSegment);
+    }
 });

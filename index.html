@@ -21,8 +21,9 @@
     <!-- HERO SECTION -->
     <header class="hero">
         <div class="compass-visual">
-            <!-- Compass SVG/Image will go here -->
-            <div class="compass-placeholder">🧭</div>
+            <img src="assets/boussole-main.jpg" alt="Boussole Imisiba" class="compass-img"
+                onerror="this.style.display='none'; document.querySelector('.compass-fallback').style.display='block';">
+            <div class="compass-fallback" style="display:none; font-size: 5rem;">🧭</div>
         </div>
         <div class="manifesto">
             <h1>Imisiba 2026</h1>
@@ -43,26 +44,38 @@
         <div class="mosaic-grid">
             <!-- Segment 1: Citoyens -->
             <button class="mosaic-item" data-segment="citoyens">
-                <span class="icon">🌱</span>
-                <span class="label">Citoyens Engagés</span>
+                <img src="assets/segment-citoyens.jpg" alt="Citoyens" class="segment-img">
+                <div class="overlay">
+                    <span class="icon">🌱</span>
+                    <span class="label">Citoyens Engagés</span>
+                </div>
             </button>
 
             <!-- Segment 2: Éleveurs -->
             <button class="mosaic-item" data-segment="eleveurs">
-                <span class="icon">🐂</span>
-                <span class="label">Éleveurs Ambitieux</span>
+                <img src="assets/segment-eleveurs.jpg" alt="Éleveurs" class="segment-img">
+                <div class="overlay">
+                    <span class="icon">🐂</span>
+                    <span class="label">Éleveurs Ambitieux</span>
+                </div>
             </button>
 
             <!-- Segment 3: Diplomates -->
             <button class="mosaic-item" data-segment="politiques">
-                <span class="icon">🏛️</span>
-                <span class="label">Diplomates & Politiques</span>
+                <img src="assets/segment-politiques.jpg" alt="Politiques" class="segment-img">
+                <div class="overlay">
+                    <span class="icon">🏛️</span>
+                    <span class="label">Diplomates & Politiques</span>
+                </div>
             </button>
 
             <!-- Segment 4: Organisations -->
             <button class="mosaic-item" data-segment="organisations">
-                <span class="icon">🤝</span>
-                <span class="label">Organisations de Solutions</span>
+                <img src="assets/segment-organisations.jpg" alt="Organisations" class="segment-img">
+                <div class="overlay">
+                    <span class="icon">🤝</span>
+                    <span class="label">Organisations de Solutions</span>
+                </div>
             </button>
         </div>
 

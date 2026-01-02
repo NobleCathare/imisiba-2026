@@ -283,12 +283,83 @@ body::before {
     color: var(--color-muted);
 }
 
+.commitment h3 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    background: #fff;
+    padding: 2rem;
+    border: 1px solid var(--color-gold);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: var(--color-ink);
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background: #fdfdfd;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(107, 140, 66, 0.2);
+}
+
+.submit-btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.form-note {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.success-message {
+    text-align: center;
+    padding: 2rem;
+    border: 2px solid var(--color-accent);
+    background: rgba(107, 140, 66, 0.1);
+}
+
+.check-icon {
+    display: block;
+    font-size: 3rem;
+    margin-top: 1rem;
+}
+
 footer {
     text-align: center;
     padding: var(--spacing-md);
     background: var(--color-ink);
     color: #fff;
     font-size: 0.8rem;
+    margin-top: 2rem;
 }
 
 /* RESPONSIVE */

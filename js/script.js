@@ -68,5 +68,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // FORM HANDLING
+    const form = document.getElementById('engagement-form');
+    const successMsg = document.getElementById('form-success');
+
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate API call / Processing
+            const btn = form.querySelector('button');
+            const originalText = btn.textContent;
+
+            btn.textContent = "Signature en cours...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                form.classList.add('hidden'); // Or remove it from DOM
+                form.style.display = 'none';
+                successMsg.classList.remove('hidden');
+
+                // Log data for debugging (or future expansion)
+                const formData = new FormData(form);
+                console.log("Engagement:", Object.fromEntries(formData));
+            }, 1000);
+        });
+    }
+
     closeBtn.addEventListener('click', closeSegment);
 });

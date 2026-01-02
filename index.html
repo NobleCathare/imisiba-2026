@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imisiba 2026 – La Chaîne de la Vie</title>
+    <meta name="description" content="En 2026, fermons la boucle. Une campagne pour la prospérité du Burundi.">
+
+    <!-- Fonts: Cinzel for Gravure/Classic feel, Inter for readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="compass-visual">
+            <!-- Compass SVG/Image will go here -->
+            <div class="compass-placeholder">🧭</div>
+        </div>
+        <div class="manifesto">
+            <h1>Imisiba 2026</h1>
+            <p class="lead">La Chaîne de la Vie</p>
+            <p class="manifesto-text">
+                "En 2026, la prospérité du Burundi ne viendra pas d'actions isolées, mais de notre capacité à fermer la
+                boucle...
+                <strong>Imisiba est le lien entre vos mains.</strong>"
+            </p>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </header>
+
+    <!-- HUB SECTION (Mosaic) -->
+    <main class="hub-container" id="hub">
+        <h2 class="section-title">Choisissez votre Pilier</h2>
+
+        <div class="mosaic-grid">
+            <!-- Segment 1: Citoyens -->
+            <button class="mosaic-item" data-segment="citoyens">
+                <span class="icon">🌱</span>
+                <span class="label">Citoyens Engagés</span>
+            </button>
+
+            <!-- Segment 2: Éleveurs -->
+            <button class="mosaic-item" data-segment="eleveurs">
+                <span class="icon">🐂</span>
+                <span class="label">Éleveurs Ambitieux</span>
+            </button>
+
+            <!-- Segment 3: Diplomates -->
+            <button class="mosaic-item" data-segment="politiques">
+                <span class="icon">🏛️</span>
+                <span class="label">Diplomates & Politiques</span>
+            </button>
+
+            <!-- Segment 4: Organisations -->
+            <button class="mosaic-item" data-segment="organisations">
+                <span class="icon">🤝</span>
+                <span class="label">Organisations de Solutions</span>
+            </button>
+        </div>
+
+        <!-- Dynamic Content Area -->
+        <div id="segment-detail" class="segment-detail hidden">
+            <button class="close-detail" aria-label="Fermer">×</button>
+            <div class="detail-content">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- COMMITMENT SECTION -->
+    <section class="commitment" id="engage">
+        <div class="container">
+            <h3>Votre Engagement pour 2026</h3>
+            <p>Rejoignez le Bilan des Engagés.</p>
+
+            <!-- Tally Embed Placeholder -->
+            <div id="tally-form-container">
+                <div class="tally-placeholder">
+                    [Formulaire Tally.so à intégrer ici]
+                    <br>
+                    <small>Nom, Organisation, Fonction, Email/WhatsApp</small>
+                </div>
+                <!-- 
+                <iframe data-tally-src="..." width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Imisiba 2026"></iframe>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Imisiba. Tous droits réservés.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

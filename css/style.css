@@ -1,0 +1,303 @@
+/* VARIABLES & RESET */
+:root {
+    --color-bg: #f4f1ea;
+    /* Ancient Paper */
+    --color-ink: #2b3a42;
+    /* Dark Ink */
+    --color-accent: #6b8c42;
+    /* Botanical Green */
+    --color-gold: #c5a059;
+    /* Etching Gold */
+    --color-muted: #8d9da6;
+    /* Muted Blue/Grey */
+
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* TYPOGRAPHY */
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-ink);
+}
+
+h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-sm);
+}
+
+h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--color-gold);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+}
+
+/* VISUAL STYLE: GRAVURE EFFECT */
+/* Adding a subtle noise overlay to simulate paper grain */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg);
+    text-align: center;
+    position: relative;
+    background: radial-gradient(circle at center, rgba(107, 140, 66, 0.1) 0%, transparent 70%);
+}
+
+.compass-visual {
+    font-size: 5rem;
+    margin-bottom: var(--spacing-lg);
+    animation: rotateSlow 60s infinite linear;
+}
+
+@keyframes rotateSlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.lead {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+}
+
+.manifesto-text {
+    max-width: 600px;
+    margin-top: var(--spacing-md);
+    font-size: 1.1rem;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    font-size: 2rem;
+    color: var(--color-gold);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* HUB - MOSAIC */
+.hub-container {
+    min-height: 80vh;
+    padding: var(--spacing-lg) var(--spacing-md);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    max-width: 600px;
+    width: 100%;
+    margin-bottom: var(--spacing-lg);
+}
+
+.mosaic-item {
+    background: var(--color-bg);
+    border: 1px solid var(--color-ink);
+    border-radius: 4px;
+    /* Classic corners */
+    padding: var(--spacing-lg);
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+.mosaic-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0px var(--color-gold);
+    border-color: var(--color-accent);
+}
+
+.mosaic-item .icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.mosaic-item .label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* DETAIL PANEL */
+.segment-detail {
+    width: 100%;
+    max-width: 600px;
+    background: var(--color-ink);
+    color: var(--color-bg);
+    padding: var(--spacing-lg);
+    border: 2px solid var(--color-gold);
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.segment-detail.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.segment-detail.hidden {
+    display: none;
+}
+
+.close-detail {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--color-gold);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.detail-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-gold);
+    padding-bottom: var(--spacing-sm);
+}
+
+.detail-icon {
+    font-size: 2rem;
+}
+
+.detail-text {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--color-gold);
+    color: var(--color-ink);
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    background: transparent;
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+}
+
+/* COMMITMENT / FOOTER */
+.commitment {
+    padding: 4rem var(--spacing-md);
+    background-color: var(--color-bg);
+    text-align: center;
+}
+
+.tally-placeholder {
+    background: #e0ddd5;
+    padding: 2rem;
+    border: 1px dashed var(--color-ink);
+    margin-top: var(--spacing-md);
+    font-family: monospace;
+    color: var(--color-muted);
+}
+
+footer {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: var(--color-ink);
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+/* RESPONSIVE */
+@media (min-width: 768px) {
+    .mosaic-grid {
+        gap: var(--spacing-lg);
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+}
